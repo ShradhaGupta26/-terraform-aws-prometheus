@@ -1,10 +1,21 @@
-data "aws_ami" "amazon-linux" {
+data "aws_ami" "ubuntu" {
   most_recent = true
+  owners      = ["099720109477"]  # Canonical AWS account ID for Ubuntu AMIs
+
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
-  owners = ["amazon"]
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
 }
 
 data "template_file" "promscript" {
