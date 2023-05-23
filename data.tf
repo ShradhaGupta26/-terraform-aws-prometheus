@@ -18,12 +18,4 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-data "template_file" "promscript" {
-template = file("${path.module}/script.sh")
-vars = {
-    pip = var.instance_private_ip
-    mpip = var.mongo_private_ip
-
-}
-}
 
