@@ -30,12 +30,12 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets: ['localhost:9090']
-  - job_name: elasticsearch_exporter
-    static_configs:
-      - targets: ['${pip}:9114'] 
-   - job_name: mongodb_exporter
-    static_configs:
-      - targets: ['${mpip}:9001']  
+  #- job_name: elasticsearch_exporter
+   #static_configs:
+      #- targets: ['${pip}:9114'] 
+   #- job_name: mongodb_exporter
+   #static_configs:
+     #- targets: ['${mpip}:9001']  
 EOF
 cat << EOF | sudo tee /etc/systemd/system/prometheus.service
 [Unit]
